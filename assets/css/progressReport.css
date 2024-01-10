@@ -1,0 +1,44 @@
+.progress-report-container {
+    margin: 0 auto;
+    width: 800px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .image-container img {
+    max-height: 200px;
+  }
+  
+  .info-container {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  table th {
+    width: 40%;
+  }
+  
+  table td {
+    font-weight: bold;
+  }
+  
+  table th, table td {
+    padding: 10px 0;
+  }
+  
+  @media print {
+    .header {
+      display: none;
+    }
+    
+    .image-container {
+      margin-right: 30px;
+    }
+  }
+  

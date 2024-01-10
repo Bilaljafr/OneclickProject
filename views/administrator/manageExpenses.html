@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Responsive Admin Dashboard Template">
+        <meta name="keywords" content="admin,dashboard">
+        <meta name="author" content="stacks">
+        <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+        
+        <!-- Title -->
+        <title>Manage Expenses - eIMS</title>
+
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+        <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+        <link href="../../assets/plugins/DataTables/datatables.css" rel="stylesheet">   
+        <link href="../../assets/plugins/select2/css/select2.css" rel="stylesheet">
+      
+        <!-- Theme Styles -->
+        <link href="../../assets/css/connect.css" rel="stylesheet">
+        <link href="../../assets/css/dark_theme.css" rel="stylesheet">
+        <link href="../../assets/css/custom.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    </head>
+    <body>
+        <div class='loader'>
+            <div class='spinner-grow text-primary' role='status'>
+                <span class='sr-only'>Loading...</span>
+            </div>
+        </div>
+        <div class="connect-container align-content-stretch d-flex flex-wrap">
+            <div class="page-sidebar"></div>
+            <div class="page-container">
+                <div class="page-header">
+                    <nav class="navbar navbar-expand">
+                    </nav>
+                </div>
+                <div class="page-content">
+                    <div class="page-info">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Manage Expenses</li>
+                            </ol>
+                        </nav>
+                        <div class="page-options row no-gutters justify-content-end">
+                            <div class="col-auto mr-1">
+                                <div id="reportrange" name="reportrange" class="form-control">
+                                    <i class="ti ti-calendar"></i>
+                                    &ensp;
+                                    <span class="dateRange"></span>
+                                    &emsp;
+                                    <b class="fa fa-caret-down"></b>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <input type="button" class="form-control btn btn-secondary" value="Add new expense" id="addNewExpense">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-wrapper">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card" id="expensesDataCard">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Browse Expenses</h5>
+                                        <table id="manageExpenseDataTable" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>S #</th>
+                                                    <th>Date</th>
+                                                    <th>Expense details</th>
+                                                    <th>Amount</th>
+                                                    <th>Uploaded by</th>
+                                                    <!-- <th>Description</th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                        <div class="modal fade addNewExpensePopup" tabindex="-1" role="dialog" aria-labelledby="addNewExpensePopup" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Update Expense Record</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <form id="expenseForm" class="needs-validation" novalidate>
+                                                        <div class="modal-body">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="dated">Dated</label>
+                                                                    <input type="date" class="form-control" name="dated" id="dated" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="expenseTitle">Expense title</label>
+                                                                    <input type="text" name="expenseTitle" class="form-control" id="expenseTitle" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="expenseAmount">Amount</label>
+                                                                    <input type="number" name="expenseAmount" class="form-control" id="expenseAmount" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="expenseDescription">Expense description</label>
+                                                                    <input type="text" class="form-control" name="expenseDescription" id="expenseDescription" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-info">Upload Expense</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade editExpensePopup" tabindex="-1" role="dialog" aria-labelledby="editExpensePopup" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Edit Expense Record</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <form id="editExpenseForm" class="needs-validation" novalidate>
+                                                        <div class="modal-body">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="editDated">Dated</label>
+                                                                    <input type="date" class="form-control" name="editDated" id="editDated" required>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="editExpenseTitle">Expense title</label>
+                                                                    <input type="text" name="editExpenseTitle" class="form-control" id="editExpenseTitle" required>
+                                                                    <input type="hidden" name="editExpenseID" class="form-control" id="editExpenseID">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="editExpenseAmount">Amount</label>
+                                                                    <input type="number" name="editExpenseAmount" class="form-control" id="editExpenseAmount" required>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="editExpenseDescription">Expense description</label>
+                                                                    <input type="text" class="form-control" name="editExpenseDescription" id="editExpenseDescription" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-info">Save</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="page-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="footer-text">2023 © Creavios</span>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        
+        <!-- Javascripts -->
+        <script src="../../assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../../assets/plugins/DataTables/datatables.js"></script>
+        <script src="../assets/plugins/select2/js/select2.full.min.js"></script>
+        <script src="https://rawgit.com/moment/moment/2.29.4/min/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script src="../../assets/js/pages/dateRange.js" type="text/javascript"></script>
+        <script src="../../assets/js/pages/setup.js"></script>
+        <script src="../../assets/js/connect.js"></script>
+        <!--Toast Notification-->
+        <script src="../../assets/js/alert.js"></script>
+        <script src="../../assets/plugins/blockui/jquery.blockUI.js"></script>
+        <script src="../../assets/js/pages/manageExpenses.js"></script>
+    </body>
+</html>

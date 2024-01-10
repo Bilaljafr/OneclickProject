@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Responsive Admin Dashboard Template">
+        <meta name="keywords" content="admin,dashboard">
+        <meta name="author" content="stacks">
+        <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+        <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+        <!-- Title -->
+        <title>Appoint Staff Member - eIMS</title>
+
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+        <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+        <link href="../../assets/plugins/select2/css/select2.css" rel="stylesheet">
+      
+        <!-- Theme Styles -->
+        <link href="../../assets/css/connect.css" rel="stylesheet">
+        <link href="../../assets/css/dark_theme.css" rel="stylesheet">
+        <link href="../../assets/css/custom.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class='loader'>
+            <div class='spinner-grow text-primary' role='status'>
+                <span class='sr-only'>Loading...</span>
+            </div>
+        </div>
+        <div class="connect-container align-content-stretch d-flex flex-wrap">
+            <div class="page-sidebar"></div>
+            <div class="page-container">
+                <div class="page-header">
+                    <nav class="navbar navbar-expand">
+                    </nav>
+                </div>
+                <div class="page-content">
+                    <div class="page-info">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Appoint Staff Member</li>
+                            </ol>
+                        </nav>
+                        <!-- <div class="page-options">
+                            <a href="#" class="btn btn-secondary">Settings</a>
+                            <a href="#" class="btn btn-primary">Upgrade</a>
+                        </div> -->
+                    </div>
+                    <div class="main-wrapper">
+                        <div class="row">
+                            <div class="col-xl">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Appoint New Staff Member</h5>
+                                        <!-- <p>Provide valuable, actionable feedback to your users with HTML5 form validation.</p> -->
+                                        <form class="needs-validation" novalidate id="appointStaffForm" autocomplete="off">
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="StaffID">Staff ID <small>(Auto Generated)</small></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-database" aria-hidden="true"></i></span>
+                                                        </div>
+                                                        <input type="number" class="form-control" id="StaffID" name="StaffID" aria-describedby="inputGroupPrepend" required readonly>
+                                                        <div class="invalid-feedback">
+                                                            Please assign Staff ID.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="designation">Designation</label>
+                                                    <input class="form-control" type="text" id="designation" name="designation" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid designation.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="appointmentDate">Appointment date</label>
+                                                    <input type="date" class="form-control" id="appointmentDate" name="appointmentDate" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide appointment date.
+                                                    </div>
+                                                    <!-- <label for="accessType">Access type</label>
+                                                    <select class="form-control" id="accessType" name="accessType" required>
+                                                        <option value="1">Administrator</option>
+                                                        <option value="2">Teacher</option>
+                                                        <option value="3">Accountant</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please provide access type.
+                                                    </div> -->
+                                                </div> 
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="staffName">Full name</label>
+                                                    <input type="text" class="form-control" id="staffName" name="staffName" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide full name.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="fatherName">Father's name</label>
+                                                    <input type="text" class="form-control" id="fatherName" name="fatherName" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide father's name
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="cnicNumber">National ID #</label>
+                                                    <input type="number" class="form-control" id="cnicNumber" name="cnicNumber" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid CNIC number.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="cityOfBirth">City of Birth</label>
+                                                    <input type="text" class="form-control" id="cityOfBirth" name="cityOfBirth" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide city of birth.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="contactNumber">Contact number</label>
+                                                    <input type="number" class="form-control" id="contactNumber" name="contactNumber" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid contact number.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="email">Email Address</label>
+                                                    <input type="email" class="form-control" id="email" name="email" autocomplete="email"  required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid email address.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-10 mb-3">
+                                                    <label for="residentialAddress">Residential address</label>
+                                                    <input type="text" class="form-control" id="residentialAddress" name="residentialAddress" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a valid city.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 mb-3">
+                                                    Gender
+                                                    <div class="custom-control custom-radio">
+                                                        <input class="custom-control-input" type="radio" name="gender" id="male" value="Male" required>
+                                                        <label class="custom-control-label" for="male">Male</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio">
+                                                        <input class="custom-control-input" type="radio" name="gender" id="female" value="Female" required>
+                                                        <label class="custom-control-label" for="female">Female</label>
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        Please select a gender.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="dateOfBirth">Date of birth</label>
+                                                    <input  class="form-control" type="date" id="dateOfBirth" name="dateOfBirth" required>
+                                                    <div class="invalid-feedback">
+                                                        Please select a valid date.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="qualification">Qualification</label>
+                                                    <select class="form-control" id="qualification" name="qualification" required>
+                                                        <option></option>
+                                                        <option value="Matriculation">Matriculation</option>
+                                                        <option value="Intermediate">Intermediate</option>
+                                                        <option value="Graduation">Graduation</option>
+                                                        <option value="Bachelors">Bachelors</option>
+                                                        <option value="Masters">Masters</option>
+                                                        <option value="M.Phill">M.Phill</option>
+                                                        <option value="PhD">PhD</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please select a session.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="nationality">Nationality</label>
+                                                    <input type="text" class="form-control" id="nationality" name="nationality" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a nationality.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="religion">Religion</label>
+                                                    <input type="text" class="form-control" id="religion" name="religion" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide a religion.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="motherTongue">Mother tongue</label>
+                                                    <input type="text" class="form-control" id="motherTongue" name="motherTongue" required>
+                                                    <div class="invalid-feedback">
+                                                        Please provide Mother tongue.
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="maritalStatus">Marital status</label>
+                                                    <select class="form-control" id="maritalStatus" name="maritalStatus" required style="width: 100%; display: none;">
+                                                        <option></option>
+                                                        <option value="Single">Single</option>
+                                                        <option value="Married">Married</option>
+                                                        <option value="Divorced">Divorced</option>
+                                                        <option value="Widowed">Widowed</option>
+                                                        <option value="Separated">Separated</option>
+                                                    </select>
+                                                    <!-- <input type="text" class="form-control" id="maritalStatus" name="maritalStatus" required> -->
+                                                    <div class="invalid-feedback">
+                                                        Please provide Marital status.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input class="custom-control-input" type="checkbox" value="" id="invalidCheck" name="invalidCheck" required>
+                                                    <label class="custom-control-label" for="invalidCheck">
+                                                        All the informations provide above are correct.
+                                                    </label>
+                                                    <div class="invalid-feedback">
+                                                        You must agree before submitting.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-right">
+                                                <button class="btn btn-primary" type="submit" >Appoint Staff Member</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="page-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="footer-text">2023 © Enroll</span>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        
+        <!-- Javascripts -->
+        <script src="../../assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../assets/plugins/select2/js/select2.full.min.js"></script>
+        <!-- <script src="../../assets/plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+        <script src="../../assets/plugins/apexcharts/dist/apexcharts.min.js"></script>
+        <script src="../../assets/plugins/blockui/jquery.blockUI.js"></script>
+        <script src="../../assets/plugins/flot/jquery.flot.min.js"></script>
+        <script src="../../assets/plugins/flot/jquery.flot.time.min.js"></script>
+        <script src="../../assets/plugins/flot/jquery.flot.symbol.min.js"></script>
+        <script src="../../assets/plugins/flot/jquery.flot.resize.min.js"></script>
+        <script src="../../assets/plugins/flot/jquery.flot.tooltip.min.js"></script>-->
+        <script src="https://rawgit.com/moment/moment/2.29.4/min/moment.min.js"></script>
+        <script src="../../assets/js/pages/setup.js"></script>
+        <script src="../../assets/js/connect.js"></script>
+        <!--Toast Notification-->
+        <script src="../assets/js/alert.js"></script>
+        <script src="../../assets/js/pages/appointStaffMember.js"></script>
+    </body>
+</html>

@@ -1,0 +1,343 @@
+/* linear-gradient(90deg,#55c3b7 0,#5fd0a5 48%,#66da90 100%) */
+/*Toast Notification*/
+.alert-container {
+    position: fixed;
+    top: 30px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    right: 10px;
+}
+
+@media only screen and (min-width: 600px) {
+    .alert-container {
+      width: 400px;
+    }
+}
+
+.modal-alert {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: none;
+    padding: 20px 15px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.modal-alert .content {
+    display: flex;
+    align-items: center;
+}
+
+.modal-alert .content svg {
+    opacity: 0.9;
+    margin: 0px 10px;
+}
+
+.modal-alert h6 {
+    opacity: 0.9;
+    color: #fff;
+    font-weight: 600;
+    font-size: 12px;
+    padding-top: 7px;
+}
+
+.modal-alert .bar {
+    height: 2px;
+    left: 8px;
+    bottom: 0px;
+    background: rgb(255, 231, 15);
+    position: absolute;
+    border-radius: 4px 4px 0 0;
+}
+
+.progress {
+    animation: alertProgress 1s ease;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
+}
+
+div.dataTables_scrollBody table{
+    width: 100% !important;
+}
+
+/* div.dataTables_scrollHead table.dataTable{
+    width: 100%;
+} */
+
+.customized-checkbox{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.customized-checkbox:checked {
+    background-color: #007bff;
+    /* border-color: #007bff; */
+}
+  
+.customized-checkbox:checked::before {
+    content: '\2713';
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 4px;
+    line-height: 16px;
+}
+  
+.customized-checkbox:disabled {
+    cursor: not-allowed;
+}
+  
+.customized-checkbox:disabled:checked {
+    background-color: #ddd;
+    border-color: #ddd;
+}
+  
+.customized-checkbox:disabled:checked::before {
+    color: #888;
+}
+
+.dataTables_filter{ /*datatable searchbar overflow work*/
+    overflow-x: hidden;
+}
+
+@keyframes alertProgress {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+#reportrange{
+    cursor: pointer;
+}
+
+/*Custom CSS Working*/
+.logo-box{
+    padding: 0px !important;
+}
+
+/* Width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #c9c9c9;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #acacac;
+}
+
+th, td {
+    white-space: nowrap;
+}
+
+/* .table-responsive-lg {
+    overflow-x: hidden;
+    padding-bottom: 20px;
+}
+
+.table-responsive-lg:hover {
+    overflow-x: auto;
+} */
+
+.dataTables_scrollHead{
+    margin-bottom: -29px;
+}
+
+.dataTables_scroll{
+    padding-bottom: 10px;
+}
+
+.card {
+    max-width: calc(100vw - 360px) !important;
+}
+
+#reportrange .fa{
+    float: right;
+    margin-top: 2px;
+}
+
+#reportrange .dateRange{
+    float: left;
+    /* text-align: left; */
+}
+
+/* for dp update */
+.camera-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: -10px;
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px 17px 15px 17px;
+    z-index: 1;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.camera-icon i {
+    font-size: 1.5rem;
+    color: gray;
+}
+
+/* .profile-img:hover::before {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    transition: .1s;
+
+} */
+.password-strength-indicator {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+  
+.password-strength-indicator.weak {
+    background-color: red;
+    color: white;
+}
+  
+.password-strength-indicator.medium {
+    background-color: orange;
+    color: white;
+}
+  
+.password-strength-indicator.strong {
+    background-color: green;
+    color: white;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+input[type="datetime"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.modal-dialog{
+    max-height: calc(100vh - 50px); /* Adjust the height as needed */
+    overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+    .card {
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .form-group, .select2-container, .btn {
+        width: 100%;
+    }
+    .table-responsive-lg {
+        overflow-x: auto;
+    }
+
+    .camera-icon {
+        padding: 8px 10px 8px 10px;
+    }
+
+    .camera-icon i {
+        font-size: 1.2rem;
+    }
+
+    .camera-icon {
+        right: 35%;
+        transform: translateX(35%);
+    }
+
+    div.dataTables_wrapper div.dataTables_filter input{
+        width: 72% !important;
+    }
+
+    .tooltip{
+        display: none;
+    }
+}
+
+@media (max-width: 365px) {
+    .croppie-container .cr-vp-circle{
+        width: 80% !important;
+        height: 80% !important;
+    }
+
+    .cr-boundary{
+        width: 200px !important;
+        height: 200px !important;
+    }
+}

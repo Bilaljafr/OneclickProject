@@ -1,0 +1,640 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.input-border{
+    border: 1px solid rgb(219, 219, 219) !important;
+}
+
+.error {
+    border: 1px solid red !important;
+    border-radius: 5px;
+}
+
+.call-button {
+    display: inline-flex;
+    align-items: center;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #87CEEB;
+    border-radius: 4px;
+    padding: 8px 16px;
+}
+
+a.call-button{
+    border-style: solid;
+    border-color:#87CEEB;
+}
+  
+.call-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+  
+.call-text {
+    margin-right: 6px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+  
+.phone-number {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+}
+  
+.btn-transparent {
+    background-color: transparent;
+    border-color: transparent;
+    color: #555;
+}
+  
+.btn-transparent:hover {
+    color: #333;
+}
+
+.client-details-container{
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 980px;
+    padding: 26px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.89);
+    backdrop-filter: blur(4px);
+}
+
+.client-details-container .a {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.depreciation-policy-table{
+    text-align: center;
+    font-size: 14px;
+}
+
+@media (min-width: 992px) {
+    .client-details-container.sticky {
+        position: sticky;
+        top: 97px;
+        max-width: 100%;
+        z-index: 100;
+        padding: 10px 70px 10px 75px;
+        font-size: 18px;
+        border-radius: 0px;
+        box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.1);
+    }
+
+    .client-details-container.sticky table {
+        font-size: 14px;
+        max-width: 480px;
+    }
+
+    .client-details-container.sticky .rating-image {
+        width: 165px;
+    }
+
+    .client-details-container.sticky .a {
+        max-width: 174px;
+    }
+}
+
+.offer-container{
+    background-image: url(../../../assets/images/insurance-offer-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rating-image{
+    width: 180px;
+    float: right;
+}
+
+.edit-btn{
+    padding: 12px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.offer-container::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* Adjust the alpha value (0.5) to control the opacity of the overlay */
+    pointer-events: none; /* This ensures the overlay doesn't interfere with content clicks */
+}
+
+.offer-card{
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    background-image: url(../../../assets/images/shiled-cropped-transparent.png);
+    background-repeat: no-repeat;
+    background-size: 180px;
+    background-position-y: bottom;
+    background-position-x: right;
+}
+
+.pera-content-custom h4{
+    font-weight: 900;
+    font-size: 26px;
+    padding-bottom: 15px;
+}
+
+.pera-content-custom h4::after {
+    content: '';
+    display: block;
+    width: 50px; /* Adjust the width of the line as needed */
+    height: 2px; /* Adjust the height of the line as needed */
+    background-color: #0D7FBD; /* Adjust the color of the line as needed */
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.corner-image {
+    position: absolute;
+    top: 12px;
+    left: 0;
+    z-index: 1;
+    max-width: 150px;
+    /* Add other styles for your corner image */
+}
+
+.aggregate-container{
+    background-color: aliceblue;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.coverage-list {
+    list-style-type: none;
+    /* min-height: 116px; */
+    max-height: 116px;
+    overflow-y: auto;
+    margin: 0px;
+}
+
+ul {
+    padding-left: 4px !important; /* Prevent line breaks within list items */
+}
+
+.coverage-list li {
+    white-space: nowrap; /* Prevent line breaks within list items */
+}
+
+.coverage-list li::before {
+    content: '\2713'; /* Unicode checkmark symbol (✓) */
+    margin-right: 10px; /* Add some spacing between the checkmark and list item text */
+}
+
+.coverage-price-container {
+    background-color: rgba(240, 248, 255, 0.452);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.coverage-price {
+    font-weight: 800;
+}
+
+.coverage-duration{
+    font-size: 14px;
+}
+
+.shield-image {
+    position: absolute;
+    width: 200px;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+}
+
+.buy-coverage-button{
+    margin-top: 22px;
+    cursor: pointer;
+    display: block;
+}
+
+/* Custom arrow style */
+.styled-list li::before {
+    content: "\2192"; /* Unicode for right-pointing arrow */
+    margin-right: 10px;
+    color: white; /* Customize the arrow color */
+    font-weight: bold; /* Make the arrow bold, you can adjust as needed */
+}
+  
+/* Remove default list styles */
+.styled-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+/* Add some space between list items */
+.styled-list li {
+    margin-bottom: 10px;
+}
+
+.insurance-form-container{
+    /* background-color: #ffffff91; */
+    /* border-radius: 50px; */
+    backdrop-filter: blur(5px);
+    /* max-width: 95vw; */
+}
+
+.insurance-quote-container h4{
+    text-align: center;
+    font-weight: 700;
+}
+
+.insurance-quote-container h3{
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.benefit-point h3{
+    font-size: 18px !important;
+}
+
+.field-error{
+    color: red;
+    margin-left: 18px;
+    margin-top: 2px;
+    font-size: 12px;
+}
+
+.amount-in-words{
+    margin-left: 18px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow{
+    top: 9px;
+    right: 12px;
+}
+
+.insurance-form-inner-container{
+    border: 1px solid #0070ED;
+    border-radius: 10px;
+    padding: 50px !important;
+}
+
+.form-icon{
+    color: #0070ED;
+    font-size: 62px;
+}
+
+.insurance-form-inner-container .headline h5{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .aggregate-container{
+        width: 100%;
+    }
+
+    .coverage-list {
+        max-height: fit-content;
+    }
+
+    .client-details-container{
+        font-size: 12px;
+    }
+
+    .section-padding{
+        padding-top: 150px !important;
+    }
+
+    .modal-title{
+        text-transform: uppercase;
+        font-size: revert;
+        font-weight: 900;
+    }
+}
+
+@media (max-width: 998px) {
+    .manage-padding{
+        padding-top: 96px !important;
+    }
+}
+
+/* loading effect */
+.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+  
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+  
+.loading::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.back-btn{
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.view-more-benefits{
+    margin-left: 28px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* radio button working */
+/* Hidden default checkbox */
+.slider {
+    display: none;
+}
+  
+/* Slider container style */
+.slider-container {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #e5e5e5;
+    overflow: hidden;
+    margin-top: 13px;
+    margin-left: 24px;
+}
+
+.btn-container{
+    /* height: 40px; */
+    margin-top: 20px;
+    border: 1px solid rgb(77, 77, 77);
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+  
+/* Slider circle style */
+.slider-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color:#7e7e7e;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+  
+/* Slide animation for the checked state */
+.slider:checked + .slider-label {
+    background-color: #007bff;
+    transform: translateX(100%);
+}
+  
+/* Slider value style */
+.slider-value {
+    position: absolute;
+    top: 62%;
+    left: 82px;
+    /* left: 125px;
+    transform: translate(-50%, -50%); */
+    color: black; /* White text color */
+    font-weight: bold;
+}
+
+.old-price{
+    font-size: 12px;
+    text-decoration: line-through;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+
+    align-items: center;
+    justify-content: center;
+}
+  
+.modal-content {
+    background-color: #f0fdfc;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    max-width: 920px;
+    border: 1px solid #888;
+
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+.modal-tab-button{
+    border: 1px solid #0070ED;
+}
+  
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: red;
+}
+
+/* form label animation */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    border: 1px solid #ccc; /* Replace with your desired border color */
+    -webkit-text-fill-color: #333; /* Replace with your desired text color */
+}
+
+/* Add some styles to the input wrapper */
+.input-wrapper {
+    position: relative;
+}
+  
+/* Add styles to the input label */
+.input-label {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    pointer-events: none;
+    font-size: 14px;
+    transition: 0.2s ease all;
+    color: #999;
+}
+  
+/* Add styles to the input label when the input is focused or has value */
+.input-wrapper textarea:focus + .input-label,
+.input-wrapper textarea:not(:placeholder-shown) + .input-label {
+    top: -10px;
+    left: 16px;
+    font-size: 12px;
+    color: #007bff;
+    background-color: #f3f3f3;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+}
+
+.input-wrapper input:focus + .input-label,
+.input-wrapper input:not(:placeholder-shown) + .input-label {
+    top: -10px;
+    left: 16px;
+    font-size: 12px;
+    color: #007bff;
+    background-color: #f3f3f3;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+}
+
+.input-wrapper input[type="date"]:focus + .input-label,
+.input-wrapper input[type="date"]:not(:placeholder-shown) + .input-label {
+    top: -10px;
+    left: 16px;
+    font-size: 12px;
+    color: #007bff;
+    background-color: #f3f3f3;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+}
+
+/* Add some spacing to the inputs */
+.input-border {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.manage-padding{
+    padding-top: 140px;
+    min-height: 1px;
+    min-width: 100vw;
+    background-color: #333;
+}
+
+.section-padding{
+    padding-top: 200px;
+}
+
+/* scrollbar work */
+::-webkit-scrollbar {
+    width: 10px; 
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 5px; 
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #ddd; 
+}
+
+/* .table td, .table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+tbody th, td{
+    border: none; 
+    vertical-align: middle;
+}
+
+thead tr th{
+    text-align: center;
+}
+
+tbody tr td{
+    text-align: center;
+} */
+
+.close {
+    text-align: right;
+}
+
+.faq-buttons{
+    padding-bottom: 22px;
+}
+
+.nav-link{
+    border: 1px solid #0070ED;
+    background-color: white;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.nav-link-active:active, .nav-link-active:focus{
+    color: white;
+}
+
+.nav-link-active{
+    background-color: #0070ED;
+    color: white;
+}
+
+.tab-form-icon{
+    font-size: 32px;
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Admin Dashboard Template">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Assesment & Exam - eIMS</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+    <link href="../../assets/plugins/DataTables/datatables.css" rel="stylesheet">
+    <link href="../../assets/plugins/select2/css/select2.css" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link href="../../assets/css/connect.css" rel="stylesheet">
+    <link href="../../assets/css/dark_theme.css" rel="stylesheet">
+    <link href="../../assets/css/custom.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class='loader'>
+        <div class='spinner-grow text-primary' role='status'>
+            <span class='sr-only'>Loading...</span>
+        </div>
+    </div>
+    <div class="connect-container align-content-stretch d-flex flex-wrap">
+        <div class="page-sidebar"></div>
+        <div class="page-container">
+            <div class="page-header">
+                <nav class="navbar navbar-expand">
+                </nav>
+            </div>
+            <div class="page-content">
+                <div class="page-info">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Assesment & Exam</li>
+                        </ol>
+                    </nav>
+                    <div class="page-options">
+                        <select class="form-control" id="scheduledExams" name="scheduledExams" style="min-width: 250px;">
+                            <option value="">Please select an exam</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="main-wrapper">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card examCard d-none">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="examTitle"></span>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <span class="examTimer"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <form id="examForm">
+                                    <div class="card-body">
+                                        <div id="questionsContainer">
+
+                                        </div>
+                                        <!-- <div class="d-flex flex-row">
+                                            <div class="mr-3">
+                                                <p>Q # 1:</p>
+                                            </div>
+                                            <div class="d-flex flex-column align-items-start">
+                                                <div class="mb-2">
+                                                    <p><b id="question-text"></b></p>
+                                                    <div id="options-container"></div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <div class="card-footer">
+                                        <button type="button" class="btn btn-secondary mb-1" id="prev-button" disabled>Previous</button>
+                                        <button type="button" class="btn btn-secondary float-right mb-1" id="next-button">Next</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade confirmExamSelectionPopup" tabindex="-1" role="dialog" aria-labelledby="confirmExamSelectionPopup" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="needs-validation" novalidate id="modifyClassForm">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirm exam selection</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i class="material-icons">close</i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>You are about to start <b id="selectedExam"></b></h3>
+                                <br>
+                                <div class="alert alert-success" style="font-weight: normal;" role="alert">
+                                    <h6 class="alert-heading">Read carefully!</h6>
+                                    <ul>
+                                        <li>Do not close, minimize or refresh this window untill you finish your exam otherwise system will submit your exam automatically.</li>
+                                        <li>In case of system, internet or power failure, immediately contact your institute.</li>
+                                        <li>Institute has rights to access you device's camera (if detected).</li>
+                                        <li>eIMS' System can detect the use of third-party scripts that malfunction exam system. If you do so, system will submit your exam without your permission.</li>
+                                    </ul>
+                                    <hr>
+                                    <small class="mb-0">eIMS' System will be monitoring your browser's activity during exam to ensure avoid the use of search engines to find answers.</small>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-info" id="startExam">Start exam</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade resultPopup" tabindex="-1" role="dialog" aria-labelledby="resultPopup" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!-- <h5 class="modal-title">Progress report preview</h5> -->
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="material-icons">close</i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="printReport pt-4 pb-3" style="width: 100%; min-width: 900px; max-width: 900px; margin: 0 auto; border: 1px solid gray; border-radius: 10px; padding-left: 15px; padding-right: 15px;">
+                                <div class="d-flex flex-row report-header">
+                                    <div class="justify-content-start">
+                                        <img src="../../assets/images/eiMS - Defualt Logo.png" width="170">
+                                    </div>
+                                    <div class="d-flex justify-content-center text-center" style="width: 100%;">
+                                        <div class="flex-wrap">
+                                            <div class="flex-grow-1 text-uppercase">
+                                                <h3>Institute Name will be shown here</h3>
+                                            </div>
+                                            <small>Address of the Institution will be shown here</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h5 class="text-center text-uppercase mt-3 mb-4">Progress report</h5>
+                                <div class="ml-auto text-right dated">
+                                    Dated: <b>May 14, 2023</b>
+                                    <br>
+                                    Instructor: <b>Bilal Ahmed</b>
+                                </div>
+                                <div class="d-flex" style="margin-top: -45px;">
+                                    <div class="mr-3">
+                                        <img src="https://media.istockphoto.com/id/1316420668/vector/user-icon-human-person-symbol-social-profile-icon-avatar-login-sign-web-user-symbol.jpg?s=612x612&w=0&k=20&c=AhqW2ssX8EeI2IYFm6-ASQ7rfeBWfrFFV4E87SaFhJE=" alt="Student Image" style="max-width: 120px;">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-between">
+                                        <table class="table table-borderless table-sm studentDetailsForReport"></table>
+                                    </div>
+                                </div>
+                                <div class="table-responsive-lg">
+                                    <table class="table table-striped reportTable">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2" class="text-center">Report Summary</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                                <div class="mt-5 small">
+                                    <ul>
+                                        <li>This report is intended to provide an overview of the student's progress and should not be considered a comprehensive evaluation.</li>
+                                        <li>Any questions or concerns regarding this report should be directed to the appropriate teacher or school official.</li>
+                                        <li>It is important to note that academic progress is a continuous process and this report reflects the student's performance at a specific point in time.</li>
+                                        <li>Please review this report carefully and discuss any areas of concern or improvement with your student and their teachers.</li>
+                                    </ul>
+                                    <p class="text-center mt-5">This progress report has been generated electronically and is considered valid without any signature or stamp.</p>
+                                </div>                                    
+                                <div id="report-container" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-info" id="printReport">Print Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="page-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="footer-text">2023 © Creavios</span>
+                        </div>
+                    </div>
+                </div> -->
+        </div>
+    </div>
+
+    <!-- Javascripts -->
+    <script src="../../assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../assets/plugins/DataTables/datatables.js"></script>
+    <script src="../assets/plugins/select2/js/select2.full.min.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.29.4/min/moment.min.js"></script>
+    <script src="../../assets/js/pages/setup.js"></script>
+    <script src="../../assets/js/connect.js"></script>
+    <!--Toast Notification-->
+    <script src="../../assets/js/alert.js"></script>
+    <script src="../../assets/plugins/blockui/jquery.blockUI.js"></script>
+    
+    <!-- <script src="../../assets/js/pages/datatables.js"></script> -->
+    <script src="../../assets/js/pages/onlineExam.js"></script>
+</body>
+
+</html>

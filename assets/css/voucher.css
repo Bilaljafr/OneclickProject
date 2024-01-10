@@ -1,0 +1,47 @@
+.voucher-container{
+    width: 100%;
+    min-width: 900px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.voucher-body{
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+    margin: 25px;
+}
+
+.voucher-header{
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px dotted gray;
+}
+
+.voucher-header h3{
+    color: #2C3892;
+}
+
+.fee-summary-container{
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.dark-theme .voucher-body * {
+    color: black;
+}
+
+.dark-theme .voucher-body .card-header {
+    color: black;
+}
+
+.dark-theme .voucher-header h3{
+    color: #2C3892;
+}
+
+@media print {
+    .voucher-body{
+        margin: 0;
+    }
+}

@@ -1,0 +1,134 @@
+.quotecontainer{
+    /* border: 2px solid rgb(36, 36, 36); */
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 15px;
+    margin-top: 0px;
+    /* margin-left: 20px;
+    margin-right: 24px; */
+}
+
+.quotation-header{
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgb(129, 129, 129);
+}
+
+.quotation-logo{
+    width: 150px;
+    margin-left: 30px;
+}
+.quotation-header h3{
+    font-family: 26px;
+    font-weight: 900;
+    color: #0D7FBD;
+    padding-top: 20px;
+}
+
+.quotation-header {
+    font-size: 14px;
+}
+
+.premium-subtitle{
+    color: #0D7FBD;
+}
+
+.quotation-table tr:nth-child(even) {
+    background-color: #0d7fbd15; /* Replace with your desired background color for even rows */
+}
+  
+.quotation-table tr:nth-child(odd) {
+    background-color: #ffffff; /* Replace with your desired background color for odd rows */
+}
+
+.coverage-details-container{
+    background-color: #0d7fbd15;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.premium-offer-text{
+    color: #0D7FBD;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.premium-subtitle-lg{
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    margin-top: -8px;
+    text-align: right;
+}
+
+.coverage-details-container h6{
+    color: #0D7FBD;
+    font-weight: 900;
+}
+
+.section-heading{
+    color: #0D7FBD;
+    font-weight: 900;
+    font-size: 24px;
+    padding-top: 25px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+
+.cover-details-list {
+    list-style: none;
+    padding-left: 0;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.cover-details-list li.tick::before {
+    content: '\2714'; /* Unicode character for checkmark (✓) */
+    margin-right: 10px;
+    color: green;
+}
+
+.cover-details-list li.cross::before {
+    content: '\2718'; /* Unicode character for cross mark (✗) */
+    margin-right: 10px;
+    color: red;
+}
+
+.faq-container{
+    font-size: 14px;
+    padding-left: 15px;
+}
+
+.question{
+    font-weight: bold;
+    margin: 0px;
+}
+
+.answer{
+    margin: 0px;
+}
+
+.example{
+    font-size: 12px;
+    color: gray;
+}
+
+.client-details-container-quotation .client-details-container{
+    margin: 0px;
+    padding: 0px;
+}
+
+.client-details-container-quotation table{
+    font-size: 12px !important;
+}
+
+.client-details-container-quotation .rating-image{
+    width: 132px !important;
+}
+
+.quote-footer{
+    display: none;
+}

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Admin Dashboard Template">
+    <meta name="keywords" content="admin,dashboard">
+    <meta name="author" content="stacks">
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+    <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Software Configuration - eIMS</title>
+
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+    <link href="../../assets/plugins/DataTables/datatables.css" rel="stylesheet">
+    <link href="../../assets/plugins/select2/css/select2.css" rel="stylesheet">
+
+    <!-- Theme Styles -->
+    <link href="../../assets/css/connect.css" rel="stylesheet">
+    <link href="../../assets/css/dark_theme.css" rel="stylesheet">
+    <link href="../../assets/css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class='loader'>
+        <div class='spinner-grow text-primary' role='status'>
+            <span class='sr-only'>Loading...</span>
+        </div>
+    </div>
+    <div class="modal fade editClassPopup" tabindex="-1" role="dialog" aria-labelledby="editClassPopup" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <form class="needs-validation" novalidate id="modifyClassForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Update Class</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="updateClassTitle">Class Title</label>
+                                <!-- <select class="form-control" id="classTitle" name="classTitle" style="width: 100%; display: none;" multiple="multiple" required></select> -->
+                                <input type="text" class="form-control" id="updateClassTitle" name="updateClassTitle" required>
+                                <input type="hidden" class="form-control" id="updateClassID" name="updateClassID" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid title.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="modifySections">Section(s)</label>
+                                <select class="form-control" id="modifySections" name="modifySections" style="width: 100%; display: none;" multiple="multiple" required></select>
+                                <div class="invalid-feedback">
+                                    Please provide atleast one section.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <small>Use <b>Comma</b> or press <b>ENTER</b> to add multiple sections.</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-info">Update class</button>
+                        <button type="button" class="btn btn-danger" id="deleteClass">Delete class</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="connect-container align-content-stretch d-flex flex-wrap">
+        <div class="page-sidebar"></div>
+        <div class="page-container">
+            <div class="page-header">
+                <nav class="navbar navbar-expand">
+                </nav>
+            </div>
+            <div class="page-content">
+                <div class="page-info">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Software Configuration</li>
+                        </ol>
+                    </nav>
+                    <div class="page-options">
+                        <select class="form-control academicSession" id="academicSession" name="academicSession"
+                            style="min-width: 160px;">
+                            <!-- <option value="">Select academic session</option> -->
+                        </select>
+                        <button class="btn btn-secondary" id="setupNewSession">Setup new session</button>
+                        <div class="modal fade setupNewSessionPopup" tabindex="-1" role="dialog" aria-labelledby="setupNewSessionPopup" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <form class="needs-validation" novalidate id="setupNewSessionForm">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Setup new session</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="importSession">Import data from</label>
+                                                    <select class="form-control" id="importSession" name="importSession" style="width: 100%; display: none;" required></select>
+                                                    <div class="invalid-feedback">
+                                                        Please select a session.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label for="newSessionTitle">New session title</label>
+                                                    <input type="text" class="form-control" id="newSessionTitle" name="newSessionTitle" required>
+                                                    <div class="invalid-feedback">
+                                                        Please enter a title.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Import data</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card" id="feeTableCard">
+                                <div class="card-header">
+                                    Classes Details
+                                </div>
+                                <div class="card-body">
+                                    <table id="classesListTable" class="display table table-responsive-lg">
+                                        <thead class="col-md-12">
+                                            <tr>
+                                                <th>Class title</th>
+                                                <th>Section(s)</th>
+                                                <!-- <th>Action</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    <div class="modal fade addNewClassPopup" tabindex="-1" role="dialog" aria-labelledby="addNewClassPopup" aria-hidden="true">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+                                                <form class="needs-validation" novalidate id="addNewClassForm">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalCenterTitle">Add New Class</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="classTitle">Class Title</label>
+                                                                <select class="form-control" id="classTitle" name="classTitle" style="width: 100%; display: none;" multiple="multiple" required></select>
+                                                                <!-- <input type="text" class="form-control" id="classTitle" name="classTitle" required> -->
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a valid title for atleast 1 class.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="sections">Section(s) <small>For each class</small></label>
+                                                                <select class="form-control" id="sections" name="sections" style="width: 100%; display: none;" multiple="multiple" required></select>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide atleast one section.
+                                                                </div>
+                                                                <!-- <input type="number" class="form-control" id="sections" name="sections"> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <small>Use <b>Comma</b> or press <b>ENTER</b> to add multiple classes or sections.</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Add new class</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-secondary" id="addNewClass">Add new class</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card" id="feeTableCard">
+                                <div class="card-header">
+                                    Seats Management
+                                </div>
+                                <div class="card-body">
+                                    <table id="seatsManagementTable" class="display table table-responsive">
+                                        <thead class="col-md-4">
+                                            <tr>
+                                                <th>Class</th>
+                                                <th>Section</th>
+                                                <th>Total Seats</th>
+                                                <th>Available Seats</th>
+                                                <!-- <th>Action</th> -->
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                    
+                                </div>
+                                <div class="card-footer">
+                                    <button type="button" class="btn btn-secondary" id="addSeatsDetails">Add seats details</button>
+                                    <div class="modal fade addSeatsDetailsPopup" tabindex="-1" role="dialog" aria-labelledby="addSeatsDetailsPopup" aria-hidden="true">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+                                                <form class="needs-validation" novalidate id="addSeatsDetailsForm">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Add seats details</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="classTitleForSeatManagement">Class Title</label>
+                                                                <select class="form-control" id="classTitleForSeatManagement" name="classTitleForSeatManagement" style="width: 100%; display: none;" required>
+                                                                    <option></option>
+                                                                </select>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a valid title for atleast 1 class.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="sectionsForSeatManagement">Section(s) <small>For each class</small></label>
+                                                                <select class="form-control" id="sectionsForSeatManagement" name="sectionsForSeatManagement" style="width: 100%; display: none;" multiple="multiple" required></select>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide atleast one section.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="totalSeatsToAdd">Total seats</label>
+                                                                <input type="number" class="form-control" id="totalSeatsToAdd" name="totalSeatsToAdd" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a valid count.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <small>Use <b>Comma</b> or press <b>ENTER</b> to add multiple sections.</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Add seats details</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade editSeatsDetailsPopup" tabindex="-1" role="dialog" aria-labelledby="addSeatsDetailsPopup" aria-hidden="true">
+                                        <div class="modal-dialog modal-md">
+                                            <div class="modal-content">
+                                                <form class="needs-validation" novalidate id="editSeatsDetailsForm">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Add seats details</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-row">
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="classTitleForEditSeat">Class Title</label>
+                                                                <input type="text" class="form-control" id="classTitleForEditSeat" name="classTitleForEditSeat" required readonly>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a valid title for atleast 1 class.
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6 mb-3">
+                                                                <label for="sectionsForEditSeat">Section</small></label>
+                                                                <input type="text" class="form-control" id="sectionsForEditSeat" name="sectionsForEditSeat" required readonly></select>
+                                                                <input type="hidden" id="classIDToEdit" name="classIDToEdit" class="form-control" required></select>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide atleast one section.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="col-md-12 mb-3">
+                                                                <label for="totalSeatsToEdit">Total seats</label>
+                                                                <input type="number" class="form-control" id="totalSeatsToEdit" name="totalSeatsToEdit" required>
+                                                                <div class="invalid-feedback">
+                                                                    Please provide a valid count.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-info">Update seat cout</button>
+                                                        <button type="button" class="btn btn-danger" id="deleteSeatsRecord">Delete record</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="page-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="footer-text">2023 © Creavios</span>
+                        </div>
+                    </div>
+                </div> -->
+        </div>
+    </div>
+
+    <!-- Javascripts -->
+    <script src="../../assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../../assets/plugins/DataTables/datatables.js"></script>
+    <script src="../assets/plugins/select2/js/select2.full.min.js"></script>
+    <script src="https://rawgit.com/moment/moment/2.29.4/min/moment.min.js"></script>
+    <script src="../../assets/js/pages/setup.js"></script>
+    <script src="../../assets/js/connect.js"></script>
+    <!--Toast Notification-->
+    <script src="../../assets/js/alert.js"></script>
+    <script src="../../assets/plugins/blockui/jquery.blockUI.js"></script>
+    <!-- <script src="../../assets/js/pages/datatables.js"></script> -->
+    <script src="../../assets/js/pages/softwareConfiguration.js"></script>
+</body>
+
+</html>

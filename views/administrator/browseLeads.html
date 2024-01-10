@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Responsive Admin Dashboard Template">
+        <meta name="keywords" content="admin,dashboard">
+        <meta name="author" content="stacks">
+        <link rel="icon" type="image/x-icon" href="../../assets/website-assets/Onclick Insurance - Favicon.png">
+        <!-- The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        
+        <!-- Title -->
+        <title>Browse Leads - Oneclick Digital</title>
+
+        <!-- Styles -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+        <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../assets/plugins/font-awesome/css/all.css" rel="stylesheet">
+        <link href="../../assets/plugins/DataTables/datatables.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.dataTables.min.css"> -->
+        <link href="../../assets/plugins/select2/css/select2.css" rel="stylesheet">
+      
+        <!-- Theme Styles -->
+        <link href="../../assets/css/connect.css" rel="stylesheet">
+        <link href="../../assets/css/dark_theme.css" rel="stylesheet">
+        <link href="../../assets/css/custom.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    </head>
+    <body>
+        <div class='loader'>
+            <div class='spinner-grow text-primary' role='status'>
+                <span class='sr-only'>Loading...</span>
+            </div>
+        </div>
+        <div class="connect-container align-content-stretch d-flex flex-wrap">
+            <div class="page-sidebar"></div>
+            <div class="page-container">
+                <div class="page-header">
+                    <nav class="navbar navbar-expand">
+                    </nav>
+                </div>
+                <div class="page-content">
+                    <div class="page-info">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Browse Leads</li>
+                            </ol>
+                        </nav>
+                        <div class="page-options">
+                            <div id="reportrange" name="reportrange" class="form-control">
+                                <i class="ti ti-calendar"></i>
+                                &ensp;
+                                <span class="dateRange"></span>
+                                &emsp;
+                                <b class="fa fa-caret-down"></b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-wrapper">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card" id="leadsDataCard">
+                                    <div class="card-header">
+                                        <div class="row d-flex align-items-center">
+                                            <div class="col">Browse Leads</div>
+                                            <div class="col-auto text-muted">
+                                                <small>Click on row to modify respective data.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- <div class="form-row">
+                                            <div class="col-8">
+                                                <h5 class="card-title">Browse Leadss</h5>
+                                            </div>
+                                            <div class="col-4 text-right text-primary">
+                                                <small>Click on Student's row to modify data.</small>
+                                            </div>
+                                        </div> -->
+                                        <table id="leadsDataTable" class="display">
+                                            <thead>
+                                                <tr>
+                                                    <th>S #</th>
+                                                    <th>Lead details</th>
+                                                    <th>Contact details</th>
+                                                    <th>Insurance type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                        <div class="modal fade motorComprehensiveLeadPopup" tabindex="-1" role="dialog" aria-labelledby="motorComprehensiveLeadPopup" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                                <div class="modal-content">
+                                                    <form class="needs-validation" novalidate id="motorComprehensiveLeadForm">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Lead details</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <i class="material-icons">close</i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-row">
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="leadIDForCarInsurance">Lead ID</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-database" aria-hidden="true"></i></span>
+                                                                        </div>
+                                                                        <input type="number" class="form-control" id="leadIDForCarInsurance" name="leadIDForCarInsurance" aria-describedby="inputGroupPrepend" required readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="insuranceType">Insurance type</label>
+                                                                    <input type="text" class="form-control" id="insuranceType" name="insuranceType" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide insurance type.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="aggrigateForCarInsurance">Aggregate</label>
+                                                                    <select class="form-control aggregate" id="aggrigateForCarInsurance" name="aggrigateForCarInsurance" style="width: 100%;" required></select>
+                                                                    <div class="invalid-feedback">
+                                                                        Please select insurance aggregate.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="tracker">Tracker addition</label>
+                                                                    <select class="form-control" id="tracker" name="tracker" required>
+                                                                        <option value="0">No</option>
+                                                                        <option value="1">Yes</option>
+                                                                    </select>
+                                                                    <div class="invalid-feedback">
+                                                                        Please select a value.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-row">
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="applicantName">Applicant's name</label>
+                                                                    <input type="text" class="form-control" id="applicantName" name="applicantName" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide applicant's name.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="phone">Phone number</label>
+                                                                    <input type="text" class="form-control" id="phone" name="phone" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid phone number.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="emailAddress">Email address</label>
+                                                                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid email address.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-row">
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="carManufacturer">Car's manufacturer</label>
+                                                                    <input type="text" class="form-control" id="carManufacturer" name="carManufacturer" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's manufacturer.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="carModel">Car's model</label>
+                                                                    <input type="text" class="form-control" id="carModel" name="carModel" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's model.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="carManufacturingYear">Car's manufacturing year</label>
+                                                                    <input type="number" class="form-control" id="carManufacturingYear" name="carManufacturingYear" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's manufacturing year.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="carMarketValue">Car's market value</label>
+                                                                    <input type="number" class="form-control" id="carMarketValue" name="carMarketValue" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's market value.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-row">
+                                                                <div class="col-md-12 mb-3">
+                                                                    <label for="insuranceAgentRemarksForCarInsurance">Insurance agent's remarks</label>
+                                                                    <input type="text" class="form-control" id="insuranceAgentRemarksForCarInsurance" name="insuranceAgentRemarksForCarInsurance" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please give your remarks.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-info">Update Data</button>
+                                                            <button type="button" id="deleteLead" class="btn btn-danger">Delete Lead</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade bikeInsuranceLeadPopup" tabindex="-1" role="dialog" aria-labelledby="bikeInsuranceLeadPopup" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-xl">
+                                                <div class="modal-content">
+                                                    <form class="needs-validation" novalidate id="bikeInsuranceLeadForm">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Lead details</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <i class="material-icons">close</i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-row">
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="leadIDForBikeInsurance">Lead ID</label>
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="inputGroupPrepend"><i class="fa fa-database" aria-hidden="true"></i></span>
+                                                                        </div>
+                                                                        <input type="number" class="form-control" id="leadIDForBikeInsurance" name="leadIDForBikeInsurance" aria-describedby="inputGroupPrepend" required readonly>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="insuranceTypeForBikeInsurance">Insurance type</label>
+                                                                    <input type="text" class="form-control" id="insuranceTypeForBikeInsurance" name="insuranceTypeForBikeInsurance" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide insurance type.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="aggrigateForBikeInsurance">Aggregate</label>
+                                                                    <select class="form-control aggregate" id="aggrigateForBikeInsurance" name="aggrigateForBikeInsurance" style="width: 100%;" required></select>
+                                                                    <div class="invalid-feedback">
+                                                                        Please select insurance aggregate.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-row">
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="applicantNameForBikeInsurance">Applicant's name</label>
+                                                                    <input type="text" class="form-control" id="applicantNameForBikeInsurance" name="applicantNameForBikeInsurance" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide applicant's name.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="phoneForBikeInsurance">Phone number</label>
+                                                                    <input type="text" class="form-control" id="phoneForBikeInsurance" name="phoneForBikeInsurance" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid phone number.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 mb-3">
+                                                                    <label for="emailAddressForBikeInsurance">Email address</label>
+                                                                    <input type="email" class="form-control" id="emailAddressForBikeInsurance" name="emailAddressForBikeInsurance" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide a valid email address.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-row">
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="bikeManufacturer">Bike's manufacturer</label>
+                                                                    <input type="text" class="form-control" id="bikeManufacturer" name="bikeManufacturer" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's manufacturer.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="bikeEngine">Car's model</label>
+                                                                    <input type="text" class="form-control" id="bikeEngine" name="bikeEngine" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's model.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="bikeManufacturingYear">Car's manufacturing year</label>
+                                                                    <input type="number" class="form-control" id="bikeManufacturingYear" name="bikeManufacturingYear" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's manufacturing year.
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3 mb-3">
+                                                                    <label for="bikeMarketValue">Car's market value</label>
+                                                                    <input type="number" class="form-control" id="bikeMarketValue" name="bikeMarketValue" readonly required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please provide car's market value.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-row">
+                                                                <div class="col-md-12 mb-3">
+                                                                    <label for="insuranceAgentRemarksForBikeInsurance">Insurance agent's remarks</label>
+                                                                    <input type="text" class="form-control" id="insuranceAgentRemarksForBikeInsurance" name="insuranceAgentRemarksForBikeInsurance" required>
+                                                                    <div class="invalid-feedback">
+                                                                        Please give your remarks.
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-info">Update Data</button>
+                                                            <button type="button" id="deleteLead" class="btn btn-danger">Delete Lead</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Javascripts -->
+        <script src="../../assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/popper.min.js"></script>
+        <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+        <script src="../../assets/plugins/DataTables/datatables.js"></script>
+        <!-- <script type="text/javascript" src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script> -->
+        <script src="../assets/plugins/select2/js/select2.full.min.js"></script>
+        <script src="https://rawgit.com/moment/moment/2.29.4/min/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script src="../../assets/js/pages/dateRange.js" type="text/javascript"></script>
+
+        <script src="../../assets/js/pages/setup.js"></script>
+        <script src="../../assets/js/connect.js"></script>
+        <!--Toast Notification-->
+        <script src="../../assets/js/alert.js"></script>
+        <script src="../../assets/plugins/blockui/jquery.blockUI.js"></script>
+        <!-- <script src="../../assets/js/pages/datatables.js"></script> -->
+        <script src="../../assets/js/pages/browseLeads.js"></script>
+    </body>
+</html>

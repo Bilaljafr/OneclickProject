@@ -1,0 +1,38 @@
+h2 {
+	margin: 0;
+    font-weight: bold;
+}
+
+p {
+	margin: 0 0 10px;
+}
+
+.answer {
+	margin: 10px 0;
+}
+
+label {
+	margin-left: 10px;
+}
+
+/* #prev-button, #next-button {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+} */
+
+/* #submit-button {
+	background-color: #333;
+	color: #fff;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#submit-button:hover {
+	background-color: #666;
+} */
