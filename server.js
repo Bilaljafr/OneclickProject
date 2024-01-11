@@ -96,6 +96,8 @@ app.get('/faq', function (req, res) {
     res.sendFile(path.join(__dirname,'views/website-pages/faq.html'))
 })
 
+// ddds
+
 app.get('/thank-you', function (req, res) {
     res.sendFile(path.join(__dirname,'views/website-pages/thank-you.html'))
 })
